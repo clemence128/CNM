@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Products</h1>
+    <form method="post" action="/delete">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Image</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% data.forEach(el=> {%>
+                    <tr>
+                        <td>
+                            <%= el.id %>
+                        </td>
+                        <td>
+                            <%= el.name %>
+                        </td>
+                        <td>
+                            <%= el.quantity %>
+                        </td>
+                        <td>
+                            <img width="80" src="<%= el.image %>" />
+                        </td>
+                        <td>
+                            <input type="checkbox" name="id" value="<%= el.id %>"/>
+                        </td>
+                    </tr>
+                    <%})%>
+            </tbody>
+        </table>
+        <button>Delete</button>
+    </form>
+
+    <h1>Create product</h1>
+    <form enctype="multipart/form-data" method="post" action="/save">
+        <input name="id" placeholder="Enter product id" />
+        <input name="name" placeholder="Enter product name" />
+        <input name="quantity" type="number" placeholder="Enter product quantity" />
+        <input type="file" name="image" />
+        <button>Submit</button>
+    </form>
+</body>
+
+</html>
